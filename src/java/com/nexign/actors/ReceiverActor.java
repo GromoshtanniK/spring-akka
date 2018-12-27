@@ -8,9 +8,6 @@ import com.nexign.messages.SomeMessage;
 @Actor
 public class ReceiverActor extends AbstractActor {
 
-    public ReceiverActor() {
-        System.out.println();
-    }
 
     @Override
     public Receive createReceive() {

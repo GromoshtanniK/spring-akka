@@ -14,6 +14,7 @@ public class InitActor extends AbstractActor {
 
     private final PropsFactory propsFactory;
     private ActorRef router;
+    ActorRef fake;
 
     @Autowired
     public InitActor(PropsFactory propsFactory) {
@@ -25,6 +26,9 @@ public class InitActor extends AbstractActor {
         System.out.println("pre start");
         router = getContext().actorOf(new RandomPool(1000).props(propsFactory.props(ReceiverActor.class)), "router");
         System.out.println("pre start end");
+
+
+        fake = getContext().actorOf(propsFactory.props(Fake.class), "fake");
     }
 
     @Override
@@ -33,7 +37,8 @@ public class InitActor extends AbstractActor {
                 .create()
                 .match(SomeMessage.class, someMessage -> {
                     System.out.println(router.path());
-                    router.tell(new SomeMessage(), getSelf());
+                    fake.tell(new SomeMessage(), getSelf());
+//                    router.tell(new SomeMessage(), getSelf());
                 })
                 .build();
     }

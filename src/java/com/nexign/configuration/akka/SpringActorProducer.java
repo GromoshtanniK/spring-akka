@@ -16,9 +16,10 @@ public class SpringActorProducer implements IndirectActorProducer {
 
     @Override
     public Actor produce() {
-        return (Actor) applicationContext.getBean(actorBeanName);
+        return applicationContext.getBean(actorBeanName, Actor.class);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Class<? extends Actor> actorClass() {
         return (Class<? extends Actor>) applicationContext.getType(actorBeanName);
