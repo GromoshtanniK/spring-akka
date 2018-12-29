@@ -4,7 +4,7 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import com.nexign.ShardingService;
 import com.nexign.configuration.akka.PropsFactory;
-import com.nexign.configuration.akka.PrototypeActor;
+import com.nexign.configuration.akka.Actor;
 import com.nexign.messages.CDRData;
 import com.nexign.messages.Idle;
 import com.nexign.messages.ProduceSignal;
@@ -18,7 +18,7 @@ import java.util.Optional;
 
 import static java.nio.file.StandardCopyOption.ATOMIC_MOVE;
 
-@PrototypeActor
+@Actor
 public class FileReaderActor extends AbstractActor {
 
     private final PropsFactory propsFactory;

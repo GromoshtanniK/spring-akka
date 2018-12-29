@@ -2,9 +2,9 @@ package com.nexign.actors;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
-import com.nexign.configuration.akka.PrototypeActor;
+import com.nexign.configuration.akka.Actor;
 
-@PrototypeActor
+@Actor
 public class FileParser extends AbstractActor {
     @Override
     public Receive createReceive() {

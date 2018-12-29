@@ -6,7 +6,7 @@ import akka.actor.Scheduler;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.SmallestMailboxPool;
 import com.nexign.configuration.akka.PropsFactory;
-import com.nexign.configuration.akka.PrototypeActor;
+import com.nexign.configuration.akka.Actor;
 import com.nexign.messages.CDRData;
 import com.nexign.messages.Idle;
 import com.nexign.messages.ProduceSignal;
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.time.Duration;
 
-@PrototypeActor
+@Actor
 public class CDRDataConsumer extends AbstractActor {
 
     @Value("${file.readers.size}")

@@ -4,12 +4,12 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RandomPool;
-import com.nexign.configuration.akka.PrototypeActor;
+import com.nexign.configuration.akka.Actor;
 import com.nexign.configuration.akka.PropsFactory;
 import com.nexign.messages.SomeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@PrototypeActor
+@Actor
 public class InitActor extends AbstractActor {
 
     private final PropsFactory propsFactory;

@@ -7,14 +7,12 @@ import com.datastax.driver.core.*;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.nexign.configuration.akka.PrototypeActor;
+import com.nexign.configuration.akka.Actor;
 import org.springframework.beans.factory.annotation.Autowired;
 import scala.concurrent.Future;
 import scala.concurrent.impl.Promise;
 
-import java.util.concurrent.Executor;
-
-@PrototypeActor
+@Actor
 public class CassandraActor extends AbstractActor {
 
     private final Session session;
