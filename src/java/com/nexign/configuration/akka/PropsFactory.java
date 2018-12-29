@@ -1,5 +1,6 @@
 package com.nexign.configuration.akka;
 
+import akka.actor.Actor;
 import akka.actor.Extension;
 import akka.actor.Props;
 import com.nexign.configuration.akka.SpringActorProducer;
@@ -17,7 +18,7 @@ public class PropsFactory implements Extension {
         this.applicationContext = applicationContext;
     }
 
-    public Props props(Class<?> clazz) {
+    public Props props(Class<? extends Actor> clazz) {
         String[] beanNamesForType = applicationContext.getBeanNamesForType(clazz);
 
         if (beanNamesForType.length > 1) {

@@ -2,10 +2,10 @@ package com.nexign.actors;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
-import com.nexign.configuration.akka.Actor;
+import com.nexign.configuration.akka.PrototypeActor;
 import com.nexign.messages.SomeMessage;
 
-@Actor
+@PrototypeActor
 public class ReceiverActor extends AbstractActor {
 
 

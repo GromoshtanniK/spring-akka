@@ -4,12 +4,12 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RandomPool;
-import com.nexign.configuration.akka.Actor;
+import com.nexign.configuration.akka.PrototypeActor;
 import com.nexign.configuration.akka.PropsFactory;
 import com.nexign.messages.SomeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Actor
+@PrototypeActor
 public class InitActor extends AbstractActor {
 
     private final PropsFactory propsFactory;
@@ -28,7 +28,7 @@ public class InitActor extends AbstractActor {
         System.out.println("pre start end");
 
 
-        fake = getContext().actorOf(propsFactory.props(Fake.class), "fake");
+//        fake = getContext().actorOf(propsFactory.props(Fake.class), "fake");
     }
 
     @Override

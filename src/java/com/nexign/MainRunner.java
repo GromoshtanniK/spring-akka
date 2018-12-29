@@ -2,6 +2,7 @@ package com.nexign;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import com.nexign.actors.CDRDataConsumer;
 import com.nexign.actors.InitActor;
 import com.nexign.configuration.akka.PropsFactory;
 import com.nexign.messages.SomeMessage;
@@ -23,7 +24,7 @@ public class MainRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        ActorRef actorRef = actorSystem.actorOf(extension.props(InitActor.class), "init");
-        actorRef.tell(new SomeMessage(), null);
+        ActorRef actorRef = actorSystem.actorOf(extension.props(CDRDataConsumer.class), "cdr_consumer");
+//        actorRef.tell(new SomeMessage(), null);
     }
 }
