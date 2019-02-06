@@ -3,7 +3,9 @@ package com.nexign.actors;
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import akka.pattern.Patterns;
-import com.datastax.driver.core.*;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Session;
+import com.datastax.driver.core.Statement;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -13,12 +15,12 @@ import scala.concurrent.Future;
 import scala.concurrent.impl.Promise;
 
 @Actor
-public class CassandraActor extends AbstractActor {
+public class CassandraAccessActor extends AbstractActor {
 
     private final Session session;
 
     @Autowired
-    public CassandraActor(Session session) {
+    public CassandraAccessActor(Session session) {
         this.session = session;
     }
 
@@ -47,7 +49,6 @@ public class CassandraActor extends AbstractActor {
                 .match(Statement.class, statement -> {
                     Future<ResultSet> resultSetFuture = toScala(session.executeAsync(statement));
                     Patterns.pipe(resultSetFuture, getContext().dispatcher()).to(getSender());
-
                 })
                 .build();
     }

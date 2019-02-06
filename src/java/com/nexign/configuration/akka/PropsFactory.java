@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PropsFactory implements Extension {
+public class PropsFactory {
 
     private final ApplicationContext applicationContext;
 
